@@ -144,6 +144,8 @@ public class 실습과제_7장_B1_객체생성 {
 
         // 고객 생성
         Customer boy = new Customer("홍길동", "부산", 21);
+        
+        
         Customer girl = new Customer("계백", "양산", 22);
         
         boy.show();

@@ -89,7 +89,7 @@ class SeasonalDiscount implements Discountable {
 	}
 	
 	public double getDiscountedPrice(double price) {
-		return price * (1 - discountRate);
+		return price * (discountRate);
 	}
 
 }
@@ -149,12 +149,13 @@ class Order extends SeasonalDiscount {
 		 * 정가 - 시즌 할인 적용 - 고객 할인 적용 => 할인된 가격 * 수량 > 총 지불 금액
 		 */
 		double total = calculateTotal();
+		System.out.println("총금액' " + total);
 		double afSeasonalDiscount = getDiscountedPrice(total);
 		double afCustomerDiscount = customer.applyDiscount(afSeasonalDiscount);
 		
 		System.out.println("시즌 할인 후 금액: "+afSeasonalDiscount);
 		System.out.println("고객 할인 후 최종 결제 금액: "+afCustomerDiscount);
-		System.out.println("총 할인 금액"+(total-afCustomerDiscount));
+		System.out.println("총 할인 금액"+(total-afCustomerDiscount-afSeasonalDiscount));
 
 	}
 }
@@ -186,7 +187,7 @@ class RegularCustomer extends Customer {
 	@Override
 	double applyDiscount(double totalAmount) {
 		// TODO Auto-generated method stub
-		return totalAmount * (1-REGULARDISCOUNT_RATE);
+		return totalAmount * (REGULARDISCOUNT_RATE);
 	}
 
 }
@@ -204,7 +205,7 @@ class PremiumCustomer extends Customer {
 	@Override
 	double applyDiscount(double totalAmount) {
 		// TODO Auto-generated method stub
-		return totalAmount * (1-PREMIUMDISCOUNT_RATE);
+		return totalAmount * (PREMIUMDISCOUNT_RATE);
 	}
 
 

@@ -73,23 +73,42 @@ class Library {
 	public void printBooks(String msg) {
 		//top변수로 출력
 		System.out.println(msg);
-		for(int i=0;i<top;i++) {
+		for(int i=0 ; i < top ; i++) {
 			System.out.println(books[i]);
 		}
-
 	}
+	
 	public void sortBooksByTitle(){
 		//String의 compareTo() 사용
-		//람다식, 그대로 쓰면됨.
+		//람다식, 그대로 사용.
 		Arrays.sort(books, 0, top, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));//9.3.3 Arrays 클래스
 	}
 	public void sortBooksByISBN(){
 		//String의 compareTo() 사용
+		//람다식, 그대로 사용.
 		Arrays.sort(books, 0, top, (b1, b2) -> Integer.parseInt(b1.getISBN()) - Integer.parseInt(b2.getISBN()));//9.3.3 Arrays 클래스
 	}
 	public Book searchBookByTitle(String title) {
+		//람다식, 그대로 사용.
 		return null;
+	}
 
+	public boolean deleteBookByTitle(String title) {
+		// TODO Auto-generated method stub
+		for(int i = 0; i < top; i++) {
+			if(books[i].getTitle().equals(title)) {
+				// 뒤의 책들을 한 칸씩 앞으로 이동 (shift)
+				for (int j = i; j < top - 1; j++) {
+					books[j] = books[j + 1];
+				}
+				books[top - 1] = null; // 마지막 요소 null 처리
+				top--; // 도서 개수 감소
+				System.out.println("도서 \"" + title + "\" 삭제 완료");
+				return true;
+			}
+		}
+		System.out.println("도서 \"" + title + "\" 없음");
+		return false;
 	}
 }
 
@@ -124,6 +143,11 @@ public class chap9_ex{
 		library.sortBooksByISBN(); 
 		// 정렬된 도서 목록 출력 
 		library.printBooks("\nISBN정렬후");
+		
+		// 도서 삭제
+		System.out.println("도서 삭제:");
+		library.deleteBookByTitle("자바");
+		
 		// 특정 제목으로 도서 검색 
 		String searchTitle = "자바"; 
 		Book foundBook = library.searchBookByTitle(searchTitle); 

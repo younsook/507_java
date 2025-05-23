@@ -26,21 +26,26 @@ class Book implements Comparable<Book>{
 	            title, author, publicationYear, isbn);
 	}
 
-
 }
+
 
 class Library {
 	static final int CAPACITY = 5; // 기본 용량을 5로 설정
 	private ArrayList<Book> books;
+	private int top;
 
 	public Library() {
 		books = new ArrayList<>(CAPACITY);
 	}
-	// 책 추가 (용량 초과 시 OverflowException 발생) 는 if문 for문 아님
+	// 책 추가 (용량 초과 시 OverflowException 발생) 는 if문 
 	public void addBook(Book book) {
-		if (book.size()<books) {
-			System.out.println(i);
+		if (top < CAPACITY) {	//if(books.size() < CAPACITY) {		
+			books.add(book);
+			return;		
 		}
+		System.out.println("도서관책 용량 초과");
+		//용량 초과시 예외 처리구현
+		
 	
 	}
 
@@ -50,7 +55,10 @@ class Library {
 	}
 
 	public void printBooks(String msg) {
-		System.out.println(msg);
+		System.out.print("msg: "+msg);
+		for (Book s : books ) { // books는 ArrayList<Book> 타입
+			System.out.println(s); // Book 클래스의 toString()이 호출됨
+		}
 
 	}
 
@@ -85,11 +93,11 @@ public class ex_C2 {
 		library.addBook(book5);
 
 		// 도서 목록 출력
-		library.printBooks("\n현재 도서 목록:");
+		library.printBooks("현재 도서 목록\n");
 
 		library.sortBooksByTitle(); // 도서 목록 정렬
 		// 최종 도서 목록 출력
-		library.printBooks("\n\n정렬후 최종 도서 목록:");
+		library.printBooks("정렬후 최종 도서 목록\n");
 		// 특정 제목으로 도서 검색
 		String searchTitle = "자바";
 		// 정렬된 도서 목록 출력

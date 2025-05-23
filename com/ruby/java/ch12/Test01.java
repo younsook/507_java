@@ -1,4 +1,5 @@
 package com.ruby.java.ch12;
+//12 입출력 작업하기
 //파일 입출력 560p
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

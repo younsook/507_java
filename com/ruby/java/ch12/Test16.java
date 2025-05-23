@@ -1,4 +1,5 @@
 package com.ruby.java.ch12;
+//12 입출력 작업하기
 // 역직렬화 608p
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;

@@ -1,4 +1,5 @@
 package com.ruby.java.ch12;
+//12 입출력 작업하기
 // 프로퍼티 파일 590p
 import java.io.FileReader;
 import java.io.Reader;

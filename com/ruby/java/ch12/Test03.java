@@ -1,4 +1,5 @@
 package com.ruby.java.ch12;
+//12 입출력 작업하기
 //필터 스트림 활용 BufferedReader / BufferedWriter 509p
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

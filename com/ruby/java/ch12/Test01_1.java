@@ -1,5 +1,5 @@
 package com.ruby.java.ch12;
-
+//12 입출력 작업하기
 import java.io.FileInputStream;
 import java.io.FileReader;
 

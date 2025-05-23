@@ -1,4 +1,5 @@
 package com.ruby.java.ch12;
+//12 입출력 작업하기
 //Serializable 인터페이스 605p
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;

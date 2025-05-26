@@ -42,6 +42,7 @@ class Library {
 		if (top < CAPACITY) {	//if(books.size() < CAPACITY) {		
 			books.add(book);
 			return;		
+			//i++ 은 어디? 
 		}
 		System.out.println("도서관책 용량 초과");
 		//용량 초과시 예외 처리구현

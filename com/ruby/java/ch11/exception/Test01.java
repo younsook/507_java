@@ -19,9 +19,9 @@ public class Test01 {
 			String s = new String("java");
 			int len = s.length();
 //			s = null;
-			s.length(); // new NullPointerException() > throw 던지기 하는거야.받는것은 catch 로 간다. 1.
-			int arr[] = new int[3];
-			arr[3] = 30; // new ArrayIndexOutOfBoundsException()
+//			s.length(); // new NullPointerException() > throw 던지기 하는거야.받는것은 catch 로 간다. 1.
+//			int arr[] = new int[3];
+//			arr[3] = 30; // new ArrayIndexOutOfBoundsException()
 			System.out.println("OK");
 		}
 		

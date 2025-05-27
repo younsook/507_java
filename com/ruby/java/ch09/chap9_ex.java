@@ -34,12 +34,16 @@ class Book {
 	//게터
 	public String getTitle() {
 		// TODO Auto-generated method stub
+		
 		return title;
 	}
 
 	public String getISBN() {
 		// TODO Auto-generated method stub
 		return isbn;
+		
+		
+		
 	}
 	
 	@Override
@@ -81,11 +85,16 @@ class Library {
 	public void sortBooksByTitle(){
 		//String의 compareTo() 사용
 		//람다식, 그대로 사용.
+		//items.sort((b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));
 		Arrays.sort(books, 0, top, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));//9.3.3 Arrays 클래스
 	}
 	public void sortBooksByISBN(){
 		//String의 compareTo() 사용
 		//람다식, 그대로 사용.
+//		items.sort((b1, b2) -> {
+//			int i1 = Integer.parseInt(b1.getISBN());
+//			int i2 = Integer.parseInt(b2.getISBN());
+//		});
 		Arrays.sort(books, 0, top, (b1, b2) -> Integer.parseInt(b1.getISBN()) - Integer.parseInt(b2.getISBN()));//9.3.3 Arrays 클래스
 	}
 	public Book searchBookByTitle(String title) {

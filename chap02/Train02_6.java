@@ -1,15 +1,6 @@
 package chap02;
-
-/*
- * 3번째 실습
- * 교재 83 - 배열 처리 + function parameter 전달 숙달 훈련 
- *  함수에서 배열을 리턴할 때 리턴 타입 정의할 수 있어야 한다
- *  train_실습2_6다차원배열.java
- */
-
 import java.util.Arrays;
-import java.util.Random;
-public class ex_2_6 {
+public class Train02_6 {
 
 	public static void main(String[] args) {
 		int [][]A = new int[2][3];
@@ -68,3 +59,4 @@ public class ex_2_6 {
 		
 	}
 }
+

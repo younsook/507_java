@@ -57,7 +57,8 @@ class FruitPrice implements Comparator<Fruit4>{
 //교재 123~129 페이지 참조하여 구현(목표)
 
 
-public class Test03_7 {
+
+public class Task03_7 {
 
 	private static void sortData(Fruit4[] arr, Comparator<Fruit4> cc_price) {}
 	

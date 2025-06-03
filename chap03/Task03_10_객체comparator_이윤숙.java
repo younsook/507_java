@@ -1,4 +1,8 @@
 package chap03;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
 /*
  * Comparator를 사용한 학생 정보 배열 정렬 및 이진 탐색 구현
  * 
@@ -69,6 +73,70 @@ S004, 준호, Chemistry
 
  * 
  */
+
+class Student2 {
+    String sid;  // 학번
+    String sname; // 이름
+    String dept;  // 학과
+
+    public Student2(String sid, String sname, String dept) { //생성자
+        this.sid = sid;
+        this.sname = sname;
+        this.dept = dept;
+    }
+
+    @Override
+    public String toString() {
+        return sid + ", " + sname + ", " + dept;
+    }
+}
+
 public class Task03_10_객체comparator_이윤숙 {
+	
+	
+	public static void main(String[] args) {
+		Student2[] students = {
+		    new Student2("S001", "영희", "Math"),
+		    new Student2("S003", "민수", "Computer"),
+		    new Student2("S002", "철수", "Physics"),
+		    new Student2("S005", "지영", "Biology"),
+		    new Student2("S004", "준호", "Chemistry")
+		};
+		
+		System.out.println("=== 정렬 전 학생 목록 ===");
+        show(students);
+
+        // Comparator 람다식으로 sid 기준 정렬
+        Comparator<Student2> sidComparator = (a, b) -> a.sid.compareTo(b.sid);
+        Arrays.sort(students, sidComparator);
+
+        System.out.println("\n=== 정렬 후 학생 목록 ===");
+        show(students);	
+		
+        // 탐색 대상
+        Student2[] targets = {
+            new Student2("S002", "철수", "Physics"),
+            new Student2("S006", "홍길동", "Law"),
+            new Student2("S004", "준호", "Chemistry")
+        };
+
+        System.out.println("\n=== 이진 탐색 결과 ===");
+
+        for (Student2 key : targets) {
+            int idx = Arrays.binarySearch(students, key, sidComparator);
+            if (idx >= 0) {
+                System.out.println("찾은 학생: " + students[idx]);
+            } else {
+                System.out.println("학번 " + key.sid + "인 학생은 존재하지 않습니다.");
+            }
+        }
+	}
+
+	private static void show(Student2[] arr) {
+		for (Student2 s : arr) {
+            System.out.println(s);
+        }
+		
+	}
 
 }

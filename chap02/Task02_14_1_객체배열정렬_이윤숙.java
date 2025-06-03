@@ -101,14 +101,15 @@ public class Task02_14_1_객체배열정렬_이윤숙 {
 		sortData(data);
 		showData("정렬후", data);
 
-		Arrays.sort(data);//comparator가 필요하다 
+		//Arrays.sort(data);  // Comparable 구현했으므로 바로 정렬 가능 
+		Arrays.sort(data, (a, b) -> a.name.compareTo(b.name));
 		showData("Arrays.sort() 실행후", data);
 		
 		int resultIndex = binarySearch(data, "이길동");
 		if (resultIndex >= 0)
-			System.out.println("사이다가 존재하면 인덱스 = "+resultIndex);
+			System.out.println("이길동 존재하면 인덱스 = "+resultIndex);
 		else
-			System.out.println("사이다가 존재하지 않는다");
+			System.out.println("이길동 존재하지 않는다");
 		
 		PhyscData2[] newData= insertObject(data, new PhyscData2("소주다", 179, 1.5));
 		//배열의 사이즈를 1개 증가시킨후 insert되는 객체 보다 큰 값들은 우측으로 이동, 사이즈가 증가된 객체 배열을 리턴

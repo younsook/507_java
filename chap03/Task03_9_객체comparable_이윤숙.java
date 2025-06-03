@@ -64,6 +64,88 @@ S004, 준호, Chemistry
 찾은 학생: S004, 준호, Chemistry
 
  */
+
+import java.util.Arrays;
+
+//
+
+
+//Student 클래스는 Comparable<Student> 인터페이스를 구현해야 한다.
+class Student implements Comparable<Student> {
+    String sid; //(학번)
+    String sname; //(이름)
+    String dept; //(학과)
+
+    public Student(String sid, String sname, String dept) { //생성자
+        this.sid = sid;
+        this.sname = sname;
+        this.dept = dept;
+    }
+    
+    @Override
+    public String toString() { //메서드 → 출력 형식은 "S002, 철수, Physics"
+        return sid + ", " + sname + ", " + dept;
+    }
+    
+    @Override
+    public int compareTo(Student other) { //메서드 → sid 기준 오름차순 비교
+        return this.sid.compareTo(other.sid);
+    }
+}
+
 public class Task03_9_객체comparable_이윤숙 {
+	
+	public static void main(String[] args) {
+		
+		Student[] students = {
+		    new Student("S001", "영희", "Math"),
+		    new Student("S003", "민수", "Computer"),
+		    new Student("S002", "철수", "Physics"),
+		    new Student("S005", "지영", "Biology"),
+		    new Student("S004", "준호", "Chemistry")
+		};
+		
+		System.out.println("=== 정렬 전 학생 목록 ===");
+		show(students);
+		
+		Arrays.sort(students);  // Comparable의 compareTo() 기준으로 정렬
+		
+		System.out.println("\n=== 정렬 후 학생 목록 ===");
+        show(students);
+        
+        System.out.println("\n=== 이진 탐색 결과 ===");
+        
+        Student[] targets = {
+            new Student("S002", "철수", "Physics"),
+            new Student("S006", "홍길동", "Law"),
+            new Student("S004", "준호", "Chemistry")
+        };
+        
+        for (Student key : targets) {
+            int idx = Arrays.binarySearch(students, key);
+            if (idx >= 0) {
+                System.out.println("찾은 학생: " + students[idx]);
+            } else {
+                System.out.println("학번 " + key.sid + "인 학생은 존재하지 않습니다.");
+            }
+        }      
+		
+	}
+
+	private static void show(Student[] arr) {
+		for (Student s : arr) {
+            System.out.println(s);
+        }
+		
+	}
 
 }
+
+
+
+
+
+
+
+
+

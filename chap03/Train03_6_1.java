@@ -43,13 +43,19 @@ class PhyscData2 implements Comparable<PhyscData2>{
 	int height;
 	double vision;
 
+	public PhyscData2(String name, int height, double vision) {
+		this.name = name;
+		this.height = height;
+		this.vision = vision;
+	}
+	
 	@Override
 	public String toString() {
-		//리턴구현하기
-		
-		return name;//[홍길동,162,0.3] 형태로 리턴한다 
+		//리턴구현하기	
+		return "["+name+","+height+","+vision+"]";//[홍길동,162,0.3] 형태로 리턴한다 
 		
 	}
+	
 	@Override
 	public int compareTo(PhyscData2 p) { //Comparable에 있는것이다.
 		// name 비교 버젼
@@ -59,7 +65,7 @@ class PhyscData2 implements Comparable<PhyscData2>{
 
 }
 public class Train03_6_1 {
-
+	
 	public static void main(String[] args) {
 		Object ob = new Object();
 		//ob.
@@ -73,12 +79,12 @@ public class Train03_6_1 {
 				new PhyscData2("길동", 167, 0.5),
 		};
 		
-		//
-		if(data[0].compareTo(data[1]) >0) { //data[0] 객체.메소드 compareTo(data[1])
-			
-		}
-		System.out.println(data[0].toString());
-		//
+//		//
+//		if(data[0].compareTo(data[1]) >0) { //data[0] 객체.메소드 compareTo(data[1])
+//			
+//		}
+//		System.out.println(data[0].toString());
+//		//
 		
 		showData("정렬전", data);
 		sortData(data);//6장 06-4 단순 삽입 정렬 InsertionSort() 함수로 구현
@@ -105,6 +111,73 @@ public class Train03_6_1 {
 		resultIndex = Arrays.binarySearch(data, key);//compareTo()를 사용되는지를 확인-이해할 수 있어야 한다 
 		System.out.println("\nArrays.binarySearch(<나동,164,0.6>): result index = " + resultIndex);
 	}
+	
+	
+	private static void showData(String str, PhyscData2[] data) {
+		System.out.println(str);
+		for(PhyscData2 p : data) {
+			System.out.println(p);
+		}
+		
+	}
+	
+	private static void sortData(PhyscData2[] data) {
+		for(int i=1; i<data.length;i++) {
+			PhyscData2 temp = data[i];
+			int j =i;
+			while (j > 0 && temp.compareTo(data[j - 1]) < 0) {
+				data[j] = data[j - 1];
+	            j--;
+	        }
+			data[j] = temp;
+		}
+	}
+	
+	private static void reverse(PhyscData2[] data) {
+		for (int i = 0; i < data.length / 2; i++) {
+	        PhyscData2 temp = data[i];
+	        data[i] = data[data.length - 1 - i];
+	        data[data.length - 1 - i] = temp;
+	    }
+		
+	}
+	
+	private static int linearSearch(PhyscData2[] data, PhyscData2 key) {
+		for (int i = 0; i < data.length; i++) {
+	        if (data[i].compareTo(key) == 0)
+	            return i;
+	    }
+	    return -1;
+	}
+	
+	private static int binarySearch(PhyscData2[] data, PhyscData2 key) {
+		int left = 0, right = data.length - 1;
+	    while (left <= right) {
+	        int mid = (left + right) / 2;
+	        int comp = data[mid].compareTo(key);
+	        if (comp == 0)
+	            return mid;
+	        else if (comp < 0)
+	            left = mid + 1;
+	        else
+	            right = mid - 1;
+	    }
+	    return -1;
+	}
+	
+
+	
+
+	
+
+	
+
+	
+
+
+	
+
+	
 	
 	
 

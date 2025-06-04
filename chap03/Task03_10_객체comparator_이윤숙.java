@@ -2,6 +2,7 @@ package chap03;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 
 /*
  * Comparator를 사용한 학생 정보 배열 정렬 및 이진 탐색 구현
@@ -75,20 +76,62 @@ S004, 준호, Chemistry
  */
 
 class Student2 {
-    String sid;  // 학번
-    String sname; // 이름
-    String dept;  // 학과
+    private String sid;  // 학번
+    private String sname; // 이름
+    private String dept;  // 학과
 
     public Student2(String sid, String sname, String dept) { //생성자
         this.sid = sid;
         this.sname = sname;
         this.dept = dept;
     }
+    
+    public String getSid() {
+		return sid;
+	}
 
-    @Override
+	public void setSid(String sid) {
+		this.sid = sid;
+	}
+
+    public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+	public String getDept() {
+		return dept;
+	}
+
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+
+	@Override
     public String toString() {
         return sid + ", " + sname + ", " + dept;
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(sid);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student2 other = (Student2) obj;
+		return Objects.equals(sid, other.sid);
+	}
+	
 }
 
 public class Task03_10_객체comparator_이윤숙 {
@@ -107,7 +150,7 @@ public class Task03_10_객체comparator_이윤숙 {
         show(students);
 
         // Comparator 람다식으로 sid 기준 정렬
-        Comparator<Student2> sidComparator = (a, b) -> a.sid.compareTo(b.sid);
+        Comparator<Student2> sidComparator = (a, b) -> a.getSid().compareTo(b.getSid());
         Arrays.sort(students, sidComparator);
 
         System.out.println("\n=== 정렬 후 학생 목록 ===");
@@ -127,7 +170,7 @@ public class Task03_10_객체comparator_이윤숙 {
             if (idx >= 0) {
                 System.out.println("찾은 학생: " + students[idx]);
             } else {
-                System.out.println("학번 " + key.sid + "인 학생은 존재하지 않습니다.");
+                System.out.println("학번 " + key.getSid() + "인 학생은 존재하지 않습니다.");
             }
         }
 	}

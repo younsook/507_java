@@ -14,7 +14,7 @@ import java.util.Random;
 
 import java.util.Scanner;
 
-//int형 고정 길이 스택
+
 
 class IntStack4 {
 	private List<Integer> stk; // 스택용 리스트
@@ -65,6 +65,8 @@ public RuntimeException(String message) {
 			throw new OverflowIntStackException("push: stack overflow");
 		}
 		stk.add(x);
+//return stk.size(); 리스트 사이즈 자체를 스택의 개수로 사용하므로
+//top 변수 필요 없음.
 //추가
 	}
 
@@ -141,7 +143,7 @@ public RuntimeException(String message) {
 	public void dump() throws EmptyIntStackException{
 		if (isEmpty()) {
 			System.out.println("스택이 비어있습니다.");
-			throw new EmptyIntStackException("peek: stack empty");
+			
 		}
 		else {
 			//추가할 부분

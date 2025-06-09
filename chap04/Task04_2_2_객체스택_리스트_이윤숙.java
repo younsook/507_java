@@ -5,6 +5,7 @@ package chap04;
  * 좌표를 스택에 구현 소스 코드 - 5장에서 활용
  * 예외 처리 코드를 이해하는 것이 필요
  * 스택 구현을 배열이 아닌 list로 구현
+ * 객체 스택 리스트
  */
 
 import java.util.ArrayList;
@@ -34,9 +35,14 @@ class Point2 {
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode() { //이 값이 나중에 HashMap, HashSet에서 버킷 위치 결정에 사용됨.
 		return Objects.hash(ix, iy);
 	}
+	/* Objects.hash()
+	 * java.util.Objects 클래스의 정적 메소드 (static method)
+	 * 내부적으로 들어온 파라미터들을 이용해 해시코드를 계산
+	 * 다양한 타입의 인자를 받아서 자동으로 해시코드를 만들어 줌
+	 * */
 
 	@Override
 	public boolean equals(Object obj) {
@@ -51,6 +57,7 @@ class Point2 {
 	}
 }
 
+//스택 구현
 class ObjectStack{
 	private List<Point2> data;  // 스택용 배열
 	private int capacity; // 스택의 크기
@@ -81,13 +88,8 @@ class ObjectStack{
 	public ObjectStack(int maxlen) {
 		//구현
 		capacity = maxlen;
-		try {
-		//추가
-			data= new ArrayList<>(capacity); //리스트로 스택 구현
-		} catch (OutOfMemoryError e) { // 생성할 수 없음
-			capacity = 0;
-			data = null;
-		}
+		data = new ArrayList<>(capacity);
+		top = 0;
 		
 	}
 
@@ -107,8 +109,8 @@ class ObjectStack{
 		//구현
 		if (isEmpty()) // 스택이 빔
 			throw new EmptyGenericStackException("pop: stack empty");
-//추가
-		return data.remove(data.size() -1);
+		top--;
+		return data.remove(top);
 	}
 
 //--- 스택에서 데이터를 피크(peek, 정상에 있는 데이터를 들여다봄) ---//
@@ -116,28 +118,33 @@ class ObjectStack{
 		//구현
 		if (isEmpty()) // 스택이 빔
 			throw new EmptyGenericStackException("peek: stack empty");
-		return data.get(data.size() -1);
+		return data.get(top -1);
 	}
 
 //--- 스택을 비움 ---//
 	public void clear() {
+		data.clear();
 		top = 0;
 	}
 
 //--- 스택에서 x를 찾아 인덱스(없으면 –1)를 반환 ---//
 	public int indexOf(Point2 x) {
 		//구현
-		for(int i=data.size()-1;i>=0;i--) {
-			if(data.get(i)==x) {
+		for(int i = top -1; i >= 0; i--) {
+			if(data.get(i).equals(x)) { // (O) 값 비교 → 같은 좌표값이면 true
+			//if(data.get(i)==x) { // (X) 주소 비교 → 서로 다른 객체이면 false
 				return i; // 검색성공
 			}
 		}
 		return -1; //검색 실패
 	}
+	/*
+	 * 1. 현재 indexOf() 메서드에서 if(data.get(i)==x) 부분은 객체의 참조(메모리 주소)를 비교하고 있습니다. 
+	 * 값 비교를 하도록 equal()을 개선하시면 좋을 듯 합니다.*/
 
 //--- 스택의 크기를 반환 ---//
 	public int getCapacity() {
-		return capacity;
+		return top;
 	}
 
 //--- 스택에 쌓여있는 데이터 갯수를 반환 ---//
@@ -164,13 +171,17 @@ class ObjectStack{
 		}
 		else {
 			//추가할 부분
-		 for (int i = 0; i < data.size(); i++) {
-                System.out.print(data.get(i) + " ");
-            }
-            System.out.println();
-		}
+			for (int i = 0; i < top; i++) {
+	                System.out.print(data.get(i) + " ");
+	            }
+	            System.out.println();
+			}
 	}
 }
+
+
+
+
 public class Task04_2_2_객체스택_리스트_이윤숙 {
 
 	public static void main(String[] args) {

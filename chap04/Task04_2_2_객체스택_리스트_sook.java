@@ -181,8 +181,7 @@ class ObjectStack{
 
 
 
-
-public class Task04_2_2_객체스택_리스트_이윤숙 {
+public class Task04_2_2_객체스택_리스트_sook {
 
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);

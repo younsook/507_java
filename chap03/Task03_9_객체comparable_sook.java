@@ -101,9 +101,9 @@ class Student1 implements Comparable<Student1> {
 	}
 }
 
-public class Task03_9_객체comparable_이윤숙 {
-	
-	public static void main(String[] args) {
+public class Task03_9_객체comparable_sook {
+
+public static void main(String[] args) {
 		
 		Student1[] students = {
 		    new Student1("S001", "영희", "Math"),
@@ -148,12 +148,4 @@ public class Task03_9_객체comparable_이윤숙 {
 	}
 
 }
-
-
-
-
-
-
-
-
 

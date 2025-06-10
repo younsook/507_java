@@ -27,10 +27,9 @@ class PhyscData2 implements Comparable<PhyscData2>{
 	
 
 }
-public class Task02_14_1_객체배열정렬_이윤숙 {
-	
-	
-	
+
+public class Task02_14_1_객체배열정렬_sook {
+
 	static void showData(String msg, PhyscData2[]arr) {
 		System.out.println(msg);
 		for (PhyscData2 pd: arr) {

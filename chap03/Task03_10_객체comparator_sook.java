@@ -134,9 +134,9 @@ class Student2 {
 	
 }
 
-public class Task03_10_객체comparator_이윤숙 {
-	
-	
+public class Task03_10_객체comparator_sook {
+
+
 	public static void main(String[] args) {
 		Student2[] students = {
 		    new Student2("S001", "영희", "Math"),

@@ -1,10 +1,4 @@
 package chap04;
-/*train_실습4_2정수스택_배열.java
- * 실습 4_1번 - 정수 배열 스택
- * 스택을 정수 배열로 구현시에 교재 코드를 보지 않고 구현 완성하기 
- * 예외 처리 코드 이해가 필요
- * 교재 133 - 실습 4-1 소스코드를 읽어보고 가능하면 책을 보지 않고 소스코드 구현완성 노력이 좋다 
- */
 
 import java.util.Scanner;
 
@@ -145,8 +139,7 @@ class IntStack3 {
 	}
 }
 
-
-public class Train04_1 {
+public class Train04_1_1 {
 
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);

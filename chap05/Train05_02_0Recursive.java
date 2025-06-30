@@ -13,7 +13,7 @@ public class Train05_02_0Recursive {
 	    // if (n > 0) {
 		 while (n>0) {
 	    	 System.out.println("recur(" + n + " - 1) 호출됨");
-	         recur(n - 1);
+	         recur(n - 1); //자기자신을 호출
 	         System.out.println("n = " + n);
 	         System.out.println("recur(" + n + " - 2) 호출됨");
 	        // recur(n - 2);

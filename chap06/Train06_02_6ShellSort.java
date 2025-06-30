@@ -19,10 +19,10 @@ public class Train06_02_6ShellSort {
 	 * 각 그룹을 합치는 정렬을 반복
 	 * //https://tosuccess.tistory.com/124
 	 */
-
+//책218 그림6-15, 그림 6-16설명
  static void shellSort(int[] a, int n) {
 	 int count = 0;
-     for (int h = n / 2; h > 0; h /= 2)//n = 8 등 짝수일 때 4,2 등으로 효과가 적다
+     for (int h = n / 2; h > 0; h /= 2)//n = 8 등 짝수일 때 4일때 아래 for그리고 2일째 아래for동작 등으로 효과가 적다
          for (int i = h; i < n; i++) {//h=2이면 i=2,3,4,5,6 등으로 반복
         	 //insertionSort() 구현 코드임 - index i, j, h를 사용한 코딩 스킬을 익히는 것이 중요 
         	 //알고리즘 코드의 readable 학습 > 알고리즘 작성 연습을 한다 - 반복 훈련 

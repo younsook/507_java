@@ -67,23 +67,32 @@ class Stack4 {
 
 	// --- 생성자(constructor) ---//
 	public Stack4(int capacity) {
+		this.capacity = capacity;
+        this.top      = 0;
+        this.data     = new ArrayList<>(capacity);
+        // 미리 용량만 확보
+        for (int i = 0; i < capacity; i++) data.add(null);
 
 	}
 
 	// --- 스택에 x를 푸시 ---//
 	public boolean push(Point x) throws OverflowGenericStackException {
-
+		if (isFull()) throw new OverflowGenericStackException("stack::push - full");
+        data.set(top++, x);
+        return true;
 
 	}
 
 	// --- 스택에서 데이터를 팝(정상에 있는 데이터를 꺼냄) ---//
 	public Point pop() throws EmptyGenericStackException {
-
+		if (isEmpty()) throw new EmptyGenericStackException("stack::pop - empty");
+        return data.get(--top);
 	}
 
 	// --- 스택에서 데이터를 피크(peek, 정상에 있는 데이터를 들여다봄) ---//
 	public Point peek() throws EmptyGenericStackException {
-
+		if (isEmpty()) throw new EmptyGenericStackException("stack::peek - empty");
+        return data.get(top - 1);
 	}
 
 	// --- 스택을 비움 ---//

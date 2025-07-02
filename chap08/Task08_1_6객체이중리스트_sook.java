@@ -23,6 +23,7 @@ class SimpleObject2 {
 		this.name = sname;
 		this.expire = expire;
 	}
+	//오버로딩
 	public SimpleObject2() {
 		this.no = null;
 		this.name = null;
@@ -148,7 +149,7 @@ class DoubledLinkedList2 {
 	public DoubledLinkedList2 merge_NewList(DoubledLinkedList2 lst2, Comparator<SimpleObject2> cc) {
 		//l3 = l1.merge(l2); 실행하도록 리턴 값이 리스트임 
 		//l.add(객체)를 사용하여 구현
-		//기존 리스트의 노드를 변경하지 않고 새로운 리스트의 노드들을 생성하여 구현 
+		//기존 리스트의 노드를 변경하지 않고(기존끊고삭제 하지않고) 새로운 리스트의 노드들을 생성하여 구현 
 		DoubledLinkedList2 lst3 = new DoubledLinkedList2();
 		Node4 p = this.first.rlink, q = lst2.first.rlink;
 

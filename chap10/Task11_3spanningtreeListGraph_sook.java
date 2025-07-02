@@ -1,97 +1,97 @@
 package chap10;
-//train_실습과제11_3최소spanningtree_리스트.java
+//train_실습과제21_3최소spanningtree_리스트.java
 import java.util.*;
 
 class Edge3 implements Comparable<Edge3> {
-    int src;
-    int dest;
-    int weight;
+  int src;
+  int dest;
+  int weight;
 
-    public Edge3() {}
+  public Edge3() {}
 
-    public Edge3(int src, int dest, int weight) {
-    	this.src = src;
-        this.dest = dest;
-        this.weight = weight;
-    }
+  public Edge3(int src, int dest, int weight) {
+  	this.src = src;
+      this.dest = dest;
+      this.weight = weight;
+  }
 
-    @Override
-    public String toString() {
-    	return String.format("%d -- %d  (w=%d)", src, dest, weight);
-    }
+  @Override
+  public String toString() {
+  	return String.format("%d -- %d  (w=%d)", src, dest, weight);
+  }
 
-    @Override
-    public int compareTo(Edge3 e) {
-    	return Integer.compare(this.weight, e.weight);
-    }
+  @Override
+  public int compareTo(Edge3 e) {
+  	return Integer.compare(this.weight, e.weight);
+  }
 }
 
 class Graph_MST {
-    int n; // Number of nodes
-    LinkedList<Edge3>[] adj; // 각 정점의 간선 리스트      
-    List<Edge3> edgePool = new ArrayList<>(); // 그래프 전체 간선(중복 제거용)
+  int n; // Number of nodes
+  LinkedList<Edge3>[] adj; // 각 정점의 간선 리스트      
+  List<Edge3> edgePool = new ArrayList<>(); // 그래프 전체 간선(중복 제거용)
 
 
-    public Graph_MST(int n) {
-    	this.n = n;
-        adj = new LinkedList[n];
-        for (int i = 0; i < n; i++) adj[i] = new LinkedList<>();
-    }
+  public Graph_MST(int n) {
+  	this.n = n;
+      adj = new LinkedList[n];
+      for (int i = 0; i < n; i++) adj[i] = new LinkedList<>();
+  }
 
-    public void insertEdge3(int src, int dest, int weight) {
-    	Edge3 e = new Edge3(src, dest, weight);
-        adj[src].add(e);
-        adj[dest].add(new Edge3(dest, src, weight));
+  public void insertEdge3(int src, int dest, int weight) {
+  	Edge3 e = new Edge3(src, dest, weight);
+      adj[src].add(e);
+      adj[dest].add(new Edge3(dest, src, weight));
 
-        // 중복 방지를 위해 src < dest 인 경우만 저장
-        if (src < dest) edgePool.add(e);
-    }
-    
-    public List<Edge3> getAllEdges() {
-        return edgePool;
-    }
+      // 중복 방지를 위해 src < dest 인 경우만 저장
+      if (src < dest) edgePool.add(e);
+  }
+  
+  public List<Edge3> getAllEdges() {
+      return edgePool;
+  }
 
-    public void displayAdjacencyLists() {
-    	System.out.println("\n[Adjacency Lists]");
-        for (int i = 0; i < n; i++) {
-            System.out.print(i + " -> ");
-            for (Edge3 e : adj[i]) {
-                System.out.print("(" + e.dest + ",w=" + e.weight + ") ");
-            }
-            System.out.println();
-        }
-    }
+  public void displayAdjacencyLists() {
+  	System.out.println("\n[Adjacency Lists]");
+      for (int i = 0; i < n; i++) {
+          System.out.print(i + " -> ");
+          for (Edge3 e : adj[i]) {
+              System.out.print("(" + e.dest + ",w=" + e.weight + ") ");
+          }
+          System.out.println();
+      }
+  }
 }
 
 class Sets {
-    int[] parent;
-    int[] rank;
+  int[] parent;
+  int[] rank;
 
-    public Sets(int n) {
-    	parent = new int[n];
-        rank   = new int[n];
-        for (int i = 0; i < n; i++) parent[i] = i;
-    }
+  public Sets(int n) {
+  	parent = new int[n];
+      rank   = new int[n];
+      for (int i = 0; i < n; i++) parent[i] = i;
+  }
 
-    public int find(int i) {
-    	if (parent[i] != i) parent[i] = find(parent[i]);
-        return parent[i];
-    }
+  public int find(int i) {
+  	if (parent[i] != i) parent[i] = find(parent[i]);
+      return parent[i];
+  }
 
-    public void union(int x, int y) {
-    	int rx = find(x);
-        int ry = find(y);
-        if (rx == ry) return;
-        if (rank[rx] < rank[ry]) parent[rx] = ry;
-        else if (rank[ry] < rank[rx]) parent[ry] = rx;
-        else {
-            parent[ry] = rx;
-            rank[rx]++;
-        }
+  public void union(int x, int y) {
+  	int rx = find(x);
+      int ry = find(y);
+      if (rx == ry) return;
+      if (rank[rx] < rank[ry]) parent[rx] = ry;
+      else if (rank[ry] < rank[rx]) parent[ry] = rx;
+      else {
+          parent[ry] = rx;
+          rank[rx]++;
+      }
 
-    }
+  }
 }
-public class Task11_01_1graph {
+public class Task11_3spanningtreeListGraph_sook {
 
 	  static void KruskalMST(Graph_MST graph) {
 	        int n = graph.n;
@@ -192,4 +192,3 @@ public class Task11_01_1graph {
 	        }
 	    }
 	}
-

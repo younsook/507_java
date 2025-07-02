@@ -1,10 +1,13 @@
 package chap09;
 /*
  * 9장 tree
+
  * 1. 난수를 생성하여 binary search tree를 만든다 - insert()함수: 삽입되는 x가 root보다 작으면 left, 크면 right child로 이동
  * 2. 임의 숫자 x를 delete: x가 leaf node, one child node, two child nodes를 가질 수 있다
  * 3. stack을 이용한  non-recursive inorder 알고리즘
  * 4. queue를 사용한 level order 알고리즘의 구현
+ * 
+ *  
  */
 import java.util.ArrayList;
 import java.util.LinkedList;

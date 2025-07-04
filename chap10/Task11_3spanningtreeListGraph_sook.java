@@ -11,8 +11,8 @@ class Edge3 implements Comparable<Edge3> {
 
   public Edge3(int src, int dest, int weight) {
   	this.src = src;
-      this.dest = dest;
-      this.weight = weight;
+    this.dest = dest;
+    this.weight = weight;
   }
 
   @Override
@@ -100,12 +100,10 @@ public class Task11_3spanningtreeListGraph_sook {
 	        // 1️ 간선 가중치 오름차순 정렬
 	        Collections.sort(edges);
 	        
-//	        // 모든 간선을 리스트에 추가
-//	        for (int i = 0; i < n; i++) {
-//	 
-//	        }
-//
-//	        // Arrays.sort()를 사용하여 간선을 가중치 기준으로 정렬
+	        // 모든 간선을 리스트에 추가
+	        for (int i = 0; i < n; i++) {  }
+
+	        // Arrays.sort()를 사용하여 간선을 가중치 기준으로 정렬
 
 
 	        // Kruskal 알고리즘을 위한 Disjoint Set 초기화
